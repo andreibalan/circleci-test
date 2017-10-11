@@ -9,7 +9,7 @@ jobs:
       - save_cache:
           key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/circleci-test
+            - package.json
 
   bundle_dependecies:
     docker:
