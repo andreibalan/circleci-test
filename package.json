@@ -63,8 +63,7 @@
     "lint2": "eslint --format junit -o reports/junit/js-lint-results.xml --ext .js,.jsx src",
     "test": "node scripts/test.js --env=jsdom",
     "test:watch": "node scripts/test.js --env=jsdom --watch",
-    "test:coverage": "node scripts/test.js --env=jsdom --coverage",
-    "test:ci": "node scripts/test.js --env=jsdom --coverage --ci --testResultsProcessor='jest-junit'"
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "jest": {
     "resolver": "jest-directory-named-resolver",
