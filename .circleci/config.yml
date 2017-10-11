@@ -9,7 +9,7 @@ jobs:
       - save_cache:
           key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ./
+            - ~/circleci-test
 
   bundle_dependecies:
     docker:
@@ -17,9 +17,11 @@ jobs:
     working_directory: ~/circleci-test
     steps:
       - restore_cache:
-          key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
+          keys:
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: npm install
