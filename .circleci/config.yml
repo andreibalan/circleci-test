@@ -60,9 +60,9 @@ jobs:
       - store_test_results:
           path: reports/junit
       - store_artifacts:
-          paths:
-            - reports/junit
-            - coverage
+          path: reports/junit
+      - store_artifacts:
+          path: coverage
 
   build:
     docker:
