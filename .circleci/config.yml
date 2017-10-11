@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  bundle_dependecies:
+  dependencies:
     docker:
       - image: circleci/node:8.6.0
     working_directory: ~/circleci-test
@@ -105,16 +105,16 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - bundle_dependecies
+      - dependencies
       - lint:
           requires:
-            - bundle_dependecies
+            - dependencies
       - test:
           requires:
-            - bundle_dependecies
+            - dependencies
       - build:
           requires:
-            - bundle_dependecies
+            - dependencies
           filters:
             branches:
               only:
