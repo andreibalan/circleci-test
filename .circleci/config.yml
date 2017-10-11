@@ -23,15 +23,30 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Add NPM authentication token
+          name: Adding NPM authentication token
           command: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       - run:
-          name: Install dependencies
+          name: Installing dependencies
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+
+  lint:
+    docker:
+      - image: circleci/node:8.4.0
+    working_directory: ~/circleci-test
+    steps:
+      - restore_cache:
+          keys:
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Linting
+          command: npm run lint
 
   test:
     docker:
@@ -45,11 +60,8 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Run Lint
-          command: npm run lint
-      - run:
-          name: Running Tests
-          command: npm test
+          name: Testing
+          command: npm run test:coverage
       - store_artifacts:
           path: coverage
 
@@ -65,7 +77,7 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Run Build
+          name: Creating Build
           command: npm run build
       - save_cache:
           key: build-cache-{{ .Environment.CIRCLE_SHA1 }}
@@ -87,7 +99,7 @@ jobs:
           keys:
             - build-cache-{{ .Environment.CIRCLE_SHA1 }}
       - run:
-          name: Run Deploy
+          name: Deploying
           command: pwd
 
 workflows:
