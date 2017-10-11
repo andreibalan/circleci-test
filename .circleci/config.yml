@@ -97,7 +97,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - bundle_dependecies:
+      - bundle_dependecies
       - lint:
           requires:
             - bundle_dependecies
