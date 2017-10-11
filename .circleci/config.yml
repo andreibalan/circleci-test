@@ -37,7 +37,11 @@ jobs:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Linting
-          command: npm run lint
+          command: eslint --format junit -o reports/junit/js-lint-results.xml --ext .js,.jsx src
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
 
   test:
     docker:
