@@ -37,7 +37,7 @@ jobs:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Linting
-          command: npm run lint2
+          command: npm run lint:report
       - store_test_results:
           path: reports/junit
       - store_artifacts:
