@@ -3,7 +3,7 @@ jobs:
   checkout_code:
     working_directory: ~/circleci-test
     docker:
-      - image: node:6
+      - image: circleci/node:8.4.0
     steps:
       - checkout
       - run:
