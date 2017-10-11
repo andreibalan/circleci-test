@@ -110,6 +110,9 @@ workflows:
       - bundle_dependecies:
           requires:
             - checkout_code
+      - lint:
+          requires:
+            - bundle_dependecies
       - test:
           requires:
             - bundle_dependecies
@@ -126,6 +129,7 @@ workflows:
                 - /hotfix-.*/
       - deploy:
           requires:
+            - lint
             - test
             - build
           filters:
