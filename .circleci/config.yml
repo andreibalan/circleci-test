@@ -26,7 +26,7 @@ jobs:
           name: Install dependencies
           command: npm install
       - save_cache:
-          key: dependecy-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
 
@@ -71,7 +71,7 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - repo-cache-{{ checksum ".circle-sha" }}
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
