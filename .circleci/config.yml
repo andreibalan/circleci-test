@@ -27,11 +27,14 @@ jobs:
       - run:
           name: Add NPM authentication token
           command: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
+          name: Test CMD
+          command: ls
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: npm install -s
+          command: npm install
       - save_cache:
           key: dependecy-cache-{{ checksum "package.json" }}
           paths:
