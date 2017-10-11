@@ -104,7 +104,7 @@ workflows:
             - bundle_dependecies
             - checkout_code
           filters:
-            breanches:
+            branches:
               only:
                 - /release-.*/
       - deploy:
