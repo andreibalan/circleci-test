@@ -9,17 +9,19 @@ jobs:
       - save_cache:
           key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - package.json
+            - ~/circleci-test
 
   bundle_dependecies:
     docker:
-      - image: node:6
+      - image: circleci/node:8.4.0
     working_directory: ~/circleci-test
     steps:
       - restore_cache:
-          key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
+          keys:
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: npm install
@@ -30,26 +32,30 @@ jobs:
 
   test:
     docker:
-      - image: node:6
+      - image: circleci/node:8.4.0
     working_directory: ~/circleci-test
     steps:
       - restore_cache:
-          key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
+          keys:
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Run Lint
           command: npm run lint
 
   build:
     docker:
-      - image: node:6
+      - image: circleci/node:8.4.0
     working_directory: ~/circleci-test
     steps:
       - restore_cache:
-          key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
+          keys:
+            - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Run Build
           command: npm run build
@@ -60,15 +66,18 @@ jobs:
 
   deploy:
     docker:
-      - image: node:6
+      - image: circleci/node:8.4.0
     working_directory: ~/circleci-test
     steps:
       - restore_cache:
-          key: repo-cache-{{ checksum ".circle-sha" }}
+          keys:
+            - repo-cache-{{ checksum ".circle-sha" }}
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - restore_cache:
-          key: build-cache-{{ .Environment.CIRCLE_SHA1 }}
+          keys:
+            - build-cache-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: Run Deploy
           command: pwd
