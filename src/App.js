@@ -10,7 +10,7 @@ import css from './App.css';
 class App extends Component {
   async test() {
     console.info('test');
-  };
+  }
 
   render() {
     return (
@@ -45,7 +45,7 @@ class App extends Component {
 
           <button
             onClick={() => {
-              this.test()
+              this.test();
             }}
           >
             Test
