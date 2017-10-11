@@ -16,7 +16,6 @@ jobs:
       - image: node:6
     working_directory: ~/circleci-test
     steps:
-      - checkout
       - restore_cache:
           key: repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
