@@ -2,7 +2,7 @@
 process.env.BABEL_ENV = 'test';
 process.env.NODE_ENV = 'test';
 process.env.PUBLIC_URL = '';
-process.env.JEST_JUNIT_OUTPUT: 'reports/junit/js-test-results.xml';
+process.env.JEST_JUNIT_OUTPUT = 'reports/junit/js-test-results.xml';
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
