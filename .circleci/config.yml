@@ -23,6 +23,9 @@ jobs:
           keys:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: Add NPM authentication token
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run:
           name: Install dependencies
           command: npm install
       - save_cache:
@@ -44,6 +47,11 @@ jobs:
       - run:
           name: Run Lint
           command: npm run lint
+      - run:
+          name: Running Tests
+          command: npm test
+      - store_artifacts:
+          path: coverage
 
   build:
     docker:
