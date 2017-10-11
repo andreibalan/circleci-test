@@ -103,6 +103,10 @@ workflows:
           requires:
             - bundle_dependecies
             - checkout_code
+          filters:
+            breanches:
+              only:
+                - /release-.*/
       - deploy:
           requires:
             - test
