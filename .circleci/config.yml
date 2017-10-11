@@ -1,9 +1,9 @@
 version: 2
 jobs:
   checkout_code:
-    working_directory: ~/circleci-test
     docker:
       - image: circleci/node:8.4.0
+    working_directory: ~/circleci-test
     steps:
       - checkout
       - run:
@@ -15,9 +15,9 @@ jobs:
             - ~/circleci-test
 
   bundle_dependecies:
-    working_directory: ~/circleci-test
     docker:
       - image: node:6
+    working_directory: ~/circleci-test
     steps:
       - run:
           name: Create Checkout Hash File
@@ -35,9 +35,9 @@ jobs:
             - node_modules
 
   test:
-    working_directory: ~/circleci-test
     docker:
       - image: node:6
+    working_directory: ~/circleci-test
     steps:
       - run:
           name: Create Checkout Hash File
@@ -51,9 +51,9 @@ jobs:
           command: npm run lint
 
   build:
-    working_directory: ~/circleci-test
     docker:
       - image: node:6
+    working_directory: ~/circleci-test
     steps:
       - run:
           name: Create Checkout Hash File
@@ -71,9 +71,9 @@ jobs:
             - dist
 
   deploy:
-    working_directory: ~/circleci-test
     docker:
       - image: node:6
+    working_directory: ~/circleci-test
     steps:
       - run:
           name: Create Checkout Hash File
