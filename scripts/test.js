@@ -15,6 +15,11 @@ process.on('unhandledRejection', (err) => {
 require('../config/env');
 
 const jest = require('jest');
+
 const argv = process.argv.slice(2);
+
+argv.push('--rootDir=./');
+argv.push('--env=jsdom');
+argv.push('--config=config/jest/config.js');
 
 jest.run(argv);
