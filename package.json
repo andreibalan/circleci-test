@@ -62,9 +62,9 @@
     "lint": "eslint --ext .js,.jsx src",
     "lint:report": "eslint --ext .js,.jsx src --format junit -o reports/junit/js-lint-results.xml",
     "test": "node scripts/test.js --env=jsdom",
-    "test:watch": "node scripts/test.js --watch",
-    "test:coverage": "node scripts/test.js --coverage",
-    "test:report": "node scripts/test.js --ci --coverage  --testResultsProcessor='jest-junit'"
+    "test:watch": "node scripts/test.js --env=jsdom --watch",
+    "test:coverage": "node scripts/test.js --env=jsdom --coverage",
+    "test:report": "node scripts/test.js --env=jsdom --ci --coverage  --testResultsProcessor='jest-junit'"
   },
   "jest": {
     "resolver": "jest-directory-named-resolver",
@@ -102,6 +102,9 @@
       "web.jsx",
       "jsx",
       "node"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js"
     ]
   }
 }
