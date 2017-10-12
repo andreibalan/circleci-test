@@ -101,7 +101,7 @@ jobs:
 
       - run:
           name: Install System Dependecies
-          command: sudo apt update && sudo apt install python py-pip py-setuptools
+          command: sudo apt update && sudo apt install python-pip python-dev
       - run:
           name: Install AWS CLI
           command: sudo pip --no-cache-dir install awscli
@@ -120,24 +120,24 @@ workflows:
       - lint:
           requires:
             - dependencies
-      - test:
-          requires:
-            - dependencies
-      - build:
-          requires:
-            - dependencies
-          filters:
-            branches:
-              only:
-                - master
-                - develop
-                - /release-.*/
-                - /hotfix-.*/
+#      - test:
+#          requires:
+#            - dependencies
+#      - build:
+#          requires:
+#            - dependencies
+#          filters:
+#            branches:
+#              only:
+#                - master
+#                - develop
+#                - /release-.*/
+#                - /hotfix-.*/
       - deploy:
           requires:
             - lint
-            - test
-            - build
+#            - test
+#            - build
           filters:
             branches:
               only:
