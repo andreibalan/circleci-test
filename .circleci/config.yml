@@ -101,13 +101,16 @@ jobs:
 
       - run:
           name: Install System Dependecies
-          command: sudo apt install python-pip python-dev
+          command: sudo apk update && sudp add --no-cache install python py-pip py-setuptools
       - run:
           name: Install AWS CLI
-          command: sudo pip install awscli
+          command: sudo pip --no-cache-dir install awscli
       - run:
           name: Deploying
-          command: awscli
+          command: aws
+      - run:
+          name: Deploying
+          command: zip
 
 workflows:
   version: 2
