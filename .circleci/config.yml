@@ -108,6 +108,7 @@ jobs:
 #      - run:
 #          name: Deploying
 #          command: aws help
+      - setup_remote_docker
       - run:
           name: Deploying
           command: docker ps
