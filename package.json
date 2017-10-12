@@ -63,7 +63,8 @@
     "lint:report": "eslint --ext .js,.jsx src --format junit -o reports/junit/js-lint-results.xml",
     "test": "node scripts/test.js --env=jsdom",
     "test:watch": "node scripts/test.js --watch",
-    "test:coverage": "node scripts/test.js --coverage"
+    "test:coverage": "node scripts/test.js --coverage",
+    "test:report": "node scripts/test.js --ci --coverage  --testResultsProcessor='jest-junit'"
   },
   "jest": {
     "resolver": "jest-directory-named-resolver",
@@ -91,7 +92,6 @@
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
     ],
-    "testResultsProcessor": "jest-junit",
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },

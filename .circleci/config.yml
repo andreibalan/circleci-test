@@ -56,7 +56,7 @@ jobs:
             - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Testing
-          command: npm run test:coverage
+          command: npm run test:report
       - store_test_results:
           path: reports/junit
       - store_artifacts:
