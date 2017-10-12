@@ -101,7 +101,7 @@ jobs:
 
       - run:
           name: Install System Dependecies
-          command: sudo apk update && sudp add --no-cache install python py-pip py-setuptools
+          command: sudo apt update && sudo apt install python py-pip py-setuptools
       - run:
           name: Install AWS CLI
           command: sudo pip --no-cache-dir install awscli
