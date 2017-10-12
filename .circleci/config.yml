@@ -104,7 +104,7 @@ jobs:
           command: sudo apt update && sudo apt install python-pip python-dev
       - run:
           name: Install AWS CLI
-          command: sudo pip --no-cache-dir install awscli
+          command: sudo pip install awscli
       - run:
           name: Deploying
           command: aws
