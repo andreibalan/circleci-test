@@ -93,13 +93,19 @@ jobs:
             - repo-cache-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           keys:
-            - dependency-cache-{{ checksum "package.json" }}
-      - restore_cache:
-          keys:
             - build-cache-{{ .Environment.CIRCLE_SHA1 }}
       - run:
+          name: Install System Dependecies
+          working_directory: /
+          commnad: |
+            apt-get -y -qq update
+            apt-get -y -qq install python3.4-dev
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python3.4 get-pip.py --user
+            pip install awscli --upgrade --user
+      - run:
           name: Deploying
-          command: pwd
+          command: awscli
 
 workflows:
   version: 2
