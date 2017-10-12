@@ -110,7 +110,7 @@ jobs:
 #          command: aws help
       - run:
           name: Deploying
-          command: zip
+          command: docker ps
 
 workflows:
   version: 2
