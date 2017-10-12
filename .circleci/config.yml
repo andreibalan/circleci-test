@@ -101,20 +101,10 @@ jobs:
 
       - run:
           name: Install System Dependecies
-          working_directory: /
-          command: sudo apt-get -y -qq install python3.4-dev
+          command: apt install python-pip python-dev
       - run:
-          name: Install System Dependecies
-          working_directory: /
-          command: sudo curl -O https://bootstrap.pypa.io/get-pip.py
-      - run:
-          name: Install System Dependecies
-          working_directory: /
-          command: sudo python3.4 get-pip.py --user
-      - run:
-          name: Install System Dependecies
-          working_directory: /
-          command: sudo pip install awscli --upgrade --user
+          name: Install AWS CLI
+          command: pip install awscli
       - run:
           name: Deploying
           command: awscli
