@@ -101,7 +101,7 @@ jobs:
 
       - run:
           name: Install System Dependecies
-          command: sudp apt install python-pip python-dev
+          command: sudo apt install python-pip python-dev
       - run:
           name: Install AWS CLI
           command: sudo pip install awscli
