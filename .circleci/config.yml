@@ -107,7 +107,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploying
-          command: aws
+          command: aws help
       - run:
           name: Deploying
           command: zip
