@@ -117,10 +117,11 @@ workflows:
       - lint:
           requires:
             - dependencies
-     - test:
+      - test:
          requires:
            - dependencies
-     - build:
+      - build:
+         type: approval
          requires:
            - dependencies
          filters:
