@@ -1,0 +1,174 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "VideoSettings",
+        "possibleTypes": [
+          {
+            "name": "MPEG2VideoSettings"
+          },
+          {
+            "name": "H264VideoSettings"
+          },
+          {
+            "name": "ProresVideoSettings"
+          },
+          {
+            "name": "UncompressedVideoSettings"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "AudioSettings",
+        "possibleTypes": [
+          {
+            "name": "AC3AudioSettings"
+          },
+          {
+            "name": "WAVAudioSettings"
+          },
+          {
+            "name": "MP2AudioSettings"
+          },
+          {
+            "name": "AACAudioSettings"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Task",
+        "possibleTypes": [
+          {
+            "name": "InspectTask"
+          },
+          {
+            "name": "TranscodeTask"
+          },
+          {
+            "name": "CopyTask"
+          },
+          {
+            "name": "ConcatTask"
+          },
+          {
+            "name": "DemuxTask"
+          },
+          {
+            "name": "InterlaceScanTask"
+          },
+          {
+            "name": "FrameScanTask"
+          },
+          {
+            "name": "CropDetectionTask"
+          },
+          {
+            "name": "BuildCplTask"
+          },
+          {
+            "name": "BuildImpMetaTask"
+          },
+          {
+            "name": "WaitForInspectTask"
+          },
+          {
+            "name": "ThumbnailTask"
+          },
+          {
+            "name": "ReverseTranscodeTask"
+          },
+          {
+            "name": "GenerateMetadataTask"
+          },
+          {
+            "name": "UpdateFeedMetadataTask"
+          },
+          {
+            "name": "OwnzonesExportTask"
+          },
+          {
+            "name": "RunQuasarJobTask"
+          },
+          {
+            "name": "TransformCaptionTask"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "ValidationError",
+        "possibleTypes": [
+          {
+            "name": "MissingFileError"
+          },
+          {
+            "name": "MetadataSetError"
+          },
+          {
+            "name": "MissingDesignationError"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "FileProperties",
+        "possibleTypes": [
+          {
+            "name": "AudioProperties"
+          },
+          {
+            "name": "ImageProperties"
+          },
+          {
+            "name": "CaptionProperties"
+          },
+          {
+            "name": "MetadataProperties"
+          },
+          {
+            "name": "UnknownProperties"
+          },
+          {
+            "name": "MediaContainerProperties"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "FileUserProperties",
+        "possibleTypes": [
+          {
+            "name": "CaptionUserProperties"
+          },
+          {
+            "name": "MediaContainerUserProperties"
+          },
+          {
+            "name": "UnknownUserProperties"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "StreamProperties",
+        "possibleTypes": [
+          {
+            "name": "VideoStreamProperties"
+          },
+          {
+            "name": "AudioStreamProperties"
+          },
+          {
+            "name": "SubtitleStreamProperties"
+          },
+          {
+            "name": "DataStreamProperties"
+          }
+        ]
+      }
+    ]
+  }
+}

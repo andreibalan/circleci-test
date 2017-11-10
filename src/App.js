@@ -1,18 +1,51 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 import Button from 'components/Button';
-import Test from './Test';
+import Card from 'components/Card';
+import Poster from 'components/Poster';
+
+import { cache } from 'core/graphql/client';
 
 import logo from './logo.svg';
 import css from './App.css';
 
-@Test
+const QUERY = gql`
+  query GetUsersInfo {
+    users {
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+`;
+
+@graphql(QUERY, {
+  options: {
+    //fetchPolicy: 'network-only',
+  },
+})
 class App extends Component {
+  static defaultProps = {
+    data: null,
+  };
+
+  static propTypes = {
+    data: PropTypes.object,
+  };
+
   async test() {
     console.info('test');
   }
 
+  componentDidCatch(error, info) {
+    console.log('error', e);
+  }
+
   render() {
+    console.info('app', this.props);
     return (
       <div className={css.App}>
         <header className={css.AppHeader}>
@@ -37,6 +70,10 @@ class App extends Component {
           <br />
           <br />
 
+          <code>
+            {JSON.stringify(this.props.data.users || {})}
+          </code>
+
           <br />
           <br />
 
@@ -46,10 +83,93 @@ class App extends Component {
           <button
             onClick={() => {
               this.test();
+              this.props.data.refetch();
+
+              // console.log(JSON.stringify(cache.extract()));
+
             }}
           >
             Test
           </button>
+
+          <br/><br/>
+
+
+          {/*<Card natural />*/}
+
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
+          <Poster prespectiveAmount={3000} />
+
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br /><br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <br />
+          <br />
+
+
         </div>
       </div>
     );

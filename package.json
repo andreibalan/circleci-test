@@ -71,5 +71,22 @@
     "test:watch": "node scripts/test.js --watch",
     "test:coverage": "node scripts/test.js --coverage",
     "test:report": "node scripts/test.js --ci --coverage  --testResultsProcessor='jest-junit'"
+  },
+  "dependencies": {
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
+    "graphql-tools": "^2.7.2",
+    "apollo-cache-inmemory": "^1.0.0",
+    "apollo-client": "^2.0.1",
+    "apollo-link": "^1.0.0",
+    "apollo-link-core": "^0.5.4",
+    "casual-browserify": "^1.5.12",
+
+    "axios": "^0.17.0",
+
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
+    "react-apollo": "^2.0.0",
+    "react-motion": "^0.5.2"
   }
 }
