@@ -113,8 +113,10 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - dependencies
+      - dependencies:
+          type: approval
       - lint:
+          type: approval
           requires:
             - dependencies
       - test:
